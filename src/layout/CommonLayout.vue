@@ -1,0 +1,60 @@
+<template>
+  <div class="common-layout-container">
+    <div class="common-side-box">
+      <div class="logo-box">中后台</div>
+      <CommonSide></CommonSide>
+    </div>
+    <div class="common-main-box">
+      <div class="common-header-container">
+        <div class="common-header-box">
+          <div></div>
+          <div class="header-right-box"></div>
+        </div>
+      </div>
+      <div class="common-content-container">
+        <AppMain></AppMain>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import CommonSide from './components/CommonSide'
+import AppMain from './components/AppMain'
+
+export default {
+  name: 'CommonLayout',
+  components: {
+    CommonSide, AppMain
+  }
+}
+</script>
+
+<style scoped lang="scss">
+@import '~@/style/variables';
+
+.common-layout-container {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  .common-side-box {
+    .logo-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $width-side-bar;
+      height: $height-header;
+      font-size: 24px;
+      font-weight: bold;
+      color: #FFFFFF;
+      background: $bg-common-side;
+    }
+  }
+  .common-main-box {
+    .common-header-container {
+      width: calc(100vw - #{$width-side-bar});
+      height: $height-header;
+    }
+  }
+}
+</style>
