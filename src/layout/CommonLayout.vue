@@ -55,6 +55,9 @@ export default {
       width: calc(100vw - #{$width-side-bar});
       height: $height-header;
     }
+    .common-content-container {
+      width: 100%;
+    }
   }
 }
 </style>
