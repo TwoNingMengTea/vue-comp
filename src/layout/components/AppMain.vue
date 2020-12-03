@@ -29,25 +29,15 @@ export default {
 
 .app-main {
   position: relative;
-  overflow: hidden;
   padding: 16px;
-  width: 100%;
+  width: calc(100vw - #{$width-side-bar});
   height: calc(100vh - #{$height-header});
   background-color: #F0F2F5;
   .app-main-content {
-    background-color: #ffffff;
+    min-width: 1200px;
     height: 100%;
     overflow: auto;
-    > div {
-      display: flex;
-      height: 100%;
-      flex-direction: column;
-      .operate-wp {
-        display: flex;
-        flex-direction: column;
-        height: calc(100% - 52px);
-      }
-    }
+    background-color: #ffffff;
   }
 }
 
