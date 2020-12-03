@@ -37,9 +37,14 @@ const mutations = {
     state.visitedViews = state.visitedViews.filter(v => v.name === view.name)
   },
   DEL_OTHERS_CACHED_VIEWS: (state, view) => {
-    const index = state.cachedViews.indexOf(view.name)
-    if (index > -1) state.cachedViews = state.cachedViews.slice(index, index + 1)
-    else state.cachedViews = []
+    state.cachedViews = state.cachedViews.filter(name => name === view.name)
+  },
+  // 删除所有
+  DEL_ALL_VISITED_VIEWS: state => {
+    state.visitedViews = []
+  },
+  DEL_ALL_CACHED_VIEWS: state => {
+    state.cachedViews = []
   },
   // 删除 左侧/右侧
   DEL_DIR_VISITED_VIEWS: (state, { view, dir }) => {
@@ -47,7 +52,7 @@ const mutations = {
     for (const [i, v] of visitedViews.entries()) {
       if (v.name === view.name) {
         if (dir === 'right') {
-          let len = visitedViews.length - (i + 1) // 右边还有 len 个数
+          let len = visitedViews.length - (i + 1) // 右边还有 len 个项
           visitedViews.splice(i + 1, len)
         } else visitedViews = visitedViews.slice(i)
         break
@@ -60,18 +65,11 @@ const mutations = {
     let cachedViews = [...state.cachedViews]
     if (index > -1) {
       if (dir === 'right') {
-        let len = cachedViews.length - (index + 1) // 右边还有 len 个数
+        let len = cachedViews.length - (index + 1) // 右边还有 len 个项
         cachedViews.splice(index + 1, len)
       } else cachedViews = cachedViews.slice(index)
     }
     state.cachedViews = cachedViews
-  },
-  // 删除所有
-  DEL_ALL_VISITED_VIEWS: state => {
-    state.visitedViews = []
-  },
-  DEL_ALL_CACHED_VIEWS: state => {
-    state.cachedViews = []
   },
 }
 
@@ -109,17 +107,6 @@ const actions = {
   delOthersCachedViews({ commit }, view) {
     commit('DEL_OTHERS_CACHED_VIEWS', view)
   },
-  // 删除 左侧/右侧
-  delDirViews({ dispatch }, { view, dir }) {
-    dispatch('delDirVisitedViews', { view, dir })
-    dispatch('delDirCachedViews', { view, dir })
-  },
-  delDirVisitedViews({ commit }, { view, dir }) {
-    commit('DEL_DIR_VISITED_VIEWS', { view, dir })
-  },
-  delDirCachedViews({ commit }, { view, dir }) {
-    commit('DEL_DIR_CACHED_VIEWS', { view, dir })
-  },
   // 删除所有
   delAllViews({ dispatch }, view) {
     dispatch('delAllVisitedViews', view)
@@ -130,6 +117,17 @@ const actions = {
   },
   delAllCachedViews({ commit }) {
     commit('DEL_ALL_CACHED_VIEWS')
+  },
+  // 删除 左侧/右侧
+  delDirViews({ dispatch }, { view, dir }) {
+    dispatch('delDirVisitedViews', { view, dir })
+    dispatch('delDirCachedViews', { view, dir })
+  },
+  delDirVisitedViews({ commit }, { view, dir }) {
+    commit('DEL_DIR_VISITED_VIEWS', { view, dir })
+  },
+  delDirCachedViews({ commit }, { view, dir }) {
+    commit('DEL_DIR_CACHED_VIEWS', { view, dir })
   },
 }
 

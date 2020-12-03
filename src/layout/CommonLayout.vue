@@ -12,6 +12,7 @@
         </div>
       </div>
       <div class="common-content-container">
+        <TabsView></TabsView>
         <AppMain></AppMain>
       </div>
     </div>
@@ -20,12 +21,13 @@
 
 <script>
 import CommonSide from './components/CommonSide'
+import TabsView from './components/TabsView'
 import AppMain from './components/AppMain'
 
 export default {
   name: 'CommonLayout',
   components: {
-    CommonSide, AppMain
+    CommonSide, TabsView, AppMain
   }
 }
 </script>

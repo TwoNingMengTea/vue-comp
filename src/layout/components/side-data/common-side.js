@@ -12,6 +12,7 @@ export default [
     authCode: '',
     children: [
       { key: 'Comp1', title: '组件一', authCode: '' },
+      { key: 'Comp2', title: '组件二', authCode: '' },
     ]
   },
   {

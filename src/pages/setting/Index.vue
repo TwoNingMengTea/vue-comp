@@ -1,15 +1,10 @@
 <template>
-  <div>
-    Dashboard
-  </div>
+  <div>Setting</div>
 </template>
 
 <script>
 export default {
-  name: 'Dashboard',
-  created() {
-    console.log('reload')
-  }
+  name: 'Setting'
 }
 </script>
 
