@@ -1,11 +1,13 @@
 <template>
   <section class="app-main">
-    <div class="app-main-content">
-      <transition name="fade" mode="out-in">
-        <keep-alive :include="cachedViews">
-          <router-view :key="key"/>
-        </keep-alive>
-      </transition>
+    <div class="app-main-scroll">
+      <div class="app-main-content">
+        <transition name="fade-transform" mode="out-in">
+          <keep-alive :include="cachedViews">
+            <router-view :key="key"/>
+          </keep-alive>
+        </transition>
+      </div>
     </div>
   </section>
 </template>
@@ -33,11 +35,15 @@ export default {
   width: calc(100vw - #{$width-side-bar});
   height: calc(100vh - #{$height-header});
   background-color: #F0F2F5;
-  .app-main-content {
-    min-width: 1200px;
-    height: 100%;
+  .app-main-scroll {
     overflow: auto;
-    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    .app-main-content {
+      min-width: 1200px;
+      height: 100%;
+    }
   }
 }
 
