@@ -53,12 +53,14 @@ export default {
     }
   }
   .common-main-box {
+    width: calc(100vw - #{$width-side-bar});
     .common-header-container {
-      width: calc(100vw - #{$width-side-bar});
+      width: 100%;
       height: $height-header;
     }
     .common-content-container {
       width: 100%;
+      height: calc(100vh - #{$height-header});
     }
   }
 }

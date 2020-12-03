@@ -33,7 +33,7 @@ export default {
   position: relative;
   padding: 16px;
   width: calc(100vw - #{$width-side-bar});
-  height: calc(100vh - #{$height-header});
+  height: calc(100% - 40px);
   background-color: #F0F2F5;
   .app-main-scroll {
     overflow: auto;

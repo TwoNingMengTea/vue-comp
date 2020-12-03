@@ -1,6 +1,6 @@
 <template>
   <div class="tabs-view-container">
-    <el-scrollbar>
+    <el-scrollbar class="tabs-view-scroll">
       <div class="tabs-view-wrapper">
         <router-link
                 v-for="tab in visitedViews"
@@ -164,47 +164,49 @@ export default {
   position: relative;
   width: 100%;
   background: #FFFFFF;
-  .tabs-view-wrapper {
-    white-space: nowrap;
-    overflow: hidden;
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-      height: 1px;
-      background-color: #d8dce5;
-    }
-    .tabs-view-item {
-      display: inline-block;
-      position: relative;
-      padding: 0 20px;
-      height: 40px;
-      line-height: 40px;
-      color: #303133;
-      cursor: pointer;
-      list-style: none;
-      font-size: 14px;
-      font-weight: 500;
-      border: 1px solid #d8dce5;
-      background: #FFFFFF;
-      & + .tabs-view-item{
-        border-left: none;
+  .tabs-view-scroll {
+    width: 100%;
+    .tabs-view-wrapper {
+      white-space: nowrap;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        height: 1px;
+        background-color: #d8dce5;
       }
-      &:first-of-type {
-        border-top-left-radius: 4px;
-        margin-left: 15px;
-      }
-      &:last-of-type {
-        border-top-right-radius: 4px;
-        margin-right: 15px;
-      }
-      &.active {
-        color: $primary-color;
-        border-bottom-color: #FFFFFF;
-      }
-      &:hover {
-        color: $primary-color;
+      .tabs-view-item {
+        display: inline-block;
+        position: relative;
+        padding: 0 20px;
+        height: 40px;
+        line-height: 40px;
+        color: #303133;
+        cursor: pointer;
+        list-style: none;
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid #d8dce5;
+        background: #FFFFFF;
+        & + .tabs-view-item{
+          border-left: none;
+        }
+        &:first-of-type {
+          border-top-left-radius: 4px;
+          margin-left: 15px;
+        }
+        &:last-of-type {
+          border-top-right-radius: 4px;
+          margin-right: 15px;
+        }
+        &.active {
+          color: $primary-color;
+          border-bottom-color: #FFFFFF;
+        }
+        &:hover {
+          color: $primary-color;
+        }
       }
     }
   }
