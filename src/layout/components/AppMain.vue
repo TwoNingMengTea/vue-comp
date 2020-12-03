@@ -2,7 +2,7 @@
   <section class="app-main">
     <div class="app-main-scroll">
       <div class="app-main-content">
-        <transition name="fade-transform" mode="out-in">
+        <transition name="fade" mode="out-in">
           <keep-alive :include="cachedViews">
             <router-view :key="key"/>
           </keep-alive>

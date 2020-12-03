@@ -5,7 +5,7 @@ const state = {
 
 const mutations = {
   // 添加
-  ADD_VISITED_VIEW: (state, view) => {
+  ADD_VISITED_VIEW(state, view) {
     if (state.visitedViews.some(v => v.name === view.name)) return
     state.visitedViews.push(
       Object.assign({}, view, {
@@ -13,14 +13,14 @@ const mutations = {
       })
     )
   },
-  ADD_CACHED_VIEW: (state, view) => {
+  ADD_CACHED_VIEW(state, view) {
     if (state.cachedViews.includes(view.name)) return
     if (!view.meta.noCache) {
       state.cachedViews.push(view.name)
     }
   },
   // 删除单个 [i, v] => [0, {name: 'xxx'}]
-  DEL_VISITED_VIEW: (state, view) => {
+  DEL_VISITED_VIEW(state, view) {
     for (const [i, v] of state.visitedViews.entries()) {
       if (v.name === view.name) {
         state.visitedViews.splice(i, 1)
@@ -28,26 +28,26 @@ const mutations = {
       }
     }
   },
-  DEL_CACHED_VIEW: (state, view) => {
+  DEL_CACHED_VIEW(state, view) {
     const index = state.cachedViews.indexOf(view.name)
     index > -1 && state.cachedViews.splice(index, 1)
   },
   // 删除其他
-  DEL_OTHERS_VISITED_VIEWS: (state, view) => {
+  DEL_OTHERS_VISITED_VIEWS(state, view) {
     state.visitedViews = state.visitedViews.filter(v => v.name === view.name)
   },
-  DEL_OTHERS_CACHED_VIEWS: (state, view) => {
+  DEL_OTHERS_CACHED_VIEWS(state, view) {
     state.cachedViews = state.cachedViews.filter(name => name === view.name)
   },
   // 删除所有
-  DEL_ALL_VISITED_VIEWS: state => {
+  DEL_ALL_VISITED_VIEWS(state) {
     state.visitedViews = []
   },
-  DEL_ALL_CACHED_VIEWS: state => {
+  DEL_ALL_CACHED_VIEWS(state) {
     state.cachedViews = []
   },
   // 删除 左侧/右侧
-  DEL_DIR_VISITED_VIEWS: (state, { view, dir }) => {
+  DEL_DIR_VISITED_VIEWS(state, { view, dir }) {
     let visitedViews = [...state.visitedViews]
     for (const [i, v] of visitedViews.entries()) {
       if (v.name === view.name) {
@@ -60,7 +60,7 @@ const mutations = {
     }
     state.visitedViews = visitedViews
   },
-  DEL_DIR_CACHED_VIEWS: (state, { view, dir }) => {
+  DEL_DIR_CACHED_VIEWS(state, { view, dir }) {
     const index = state.cachedViews.indexOf(view.name)
     let cachedViews = [...state.cachedViews]
     if (index > -1) {
