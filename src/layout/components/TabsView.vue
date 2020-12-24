@@ -4,7 +4,7 @@
       <div class="tabs-view-wrapper">
         <router-link
                 v-for="tab in visitedViews"
-                :key="tab.name"
+                :key="tab.fullPath"
                 :class="`tabs-view-item ${isActive(tab) ? 'active' : ''}`"
                 ref="tab"
                 :to="tab"
