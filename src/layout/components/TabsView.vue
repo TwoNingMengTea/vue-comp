@@ -7,7 +7,7 @@
                 :key="tab.name"
                 :class="`tabs-view-item ${isActive(tab) ? 'active' : ''}`"
                 ref="tab"
-                :to="tab"
+                :to="tab.fullPath"
                 tag="span"
                 @contextmenu.prevent.native="openMenu($event, tab)"
         >
@@ -96,7 +96,7 @@ export default {
     },
     // 重新加载目标页
     reloadPage(tab) {
-      this.$router.push({
+      this.$router.replace({
         path: `/transfer${tab.fullPath}`,
         query: {
           ...tab.params,

@@ -6,6 +6,7 @@ const state = {
 const mutations = {
   // 添加
   ADD_VISITED_VIEW(state, view) {
+    if (view.meta && view.meta.hidden) return
     if (state.visitedViews.some(v => v.name === view.name)) return
     state.visitedViews.push(
       Object.assign({}, view, {
@@ -14,6 +15,7 @@ const mutations = {
     )
   },
   ADD_CACHED_VIEW(state, view) {
+    if (view.meta && view.meta.hidden) return
     if (state.cachedViews.includes(view.name)) return
     if (!view.meta.noCache) {
       state.cachedViews.push(view.name)

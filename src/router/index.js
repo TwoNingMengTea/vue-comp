@@ -23,14 +23,15 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/transfer/:path(.*)',
-      name: 'transfer',
-      component: Transfer
-    },
-    {
       path: '/common',
       component: CommonLayout,
       children: [
+        {
+          path: '/transfer/:path(.*)',
+          name: 'transfer',
+          meta: { hidden: true },
+          component: Transfer
+        },
         {
           path: '',
           name: 'Dashboard',
